@@ -1,40 +1,71 @@
-const calculator = document.querySelector(".calculator");
-const keys = calculator.querySelector(".calculator__keys");
-const display = document.querySelector(".calculator__display");
-// const numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-
-keys.addEventListener("click", (e) => {
-  const key = e.target;
-  const action = key.dataset.action;
-  const keyContent = key.textContent;
-  const displayedNum = display.textContent;
-
-  if (e.target.matches("button")) {
-  }
-  if (!action) {
-    if (displayedNum === "0") {
-      display.textContent = keyContent;
-    } else {
-      display.textContent = displayedNum + keyContent;
-    }
-  }
-  if (
-    action === "add" ||
-    action === "subtract" ||
-    action === "multiply" ||
-    action === "divide"
-  ) {
-    console.log("operator key!");
-  }
-  if (action === "decimal") {
-    console.log("decimal key!");
-  }
-
-  if (action === "clear") {
-    console.log("clear key!");
-  }
-
-  if (action === "calculate") {
-    console.log("equal key!");
-  }
+document.addEventListener("DOMContentLoaded", function () {
+  createCalculator();
 });
+
+function createCalculator() {
+  const calculator = document.querySelector(".calculator");
+  const keys = calculator.querySelector(".calculator__keys");
+  const display = document.querySelector(".calculator__display");
+
+  const calculatorState = {
+    operationToExecute: null,
+    shouldCleanUpVisor: false,
+    savedNumber: null,
+  };
+
+  applyNumberKeys(calculator, display, calculatorState);
+
+  const operators = keys.querySelectorAll(".key--operator");
+  operators.forEach((operatorButton) =>
+    operatorButton.addEventListener("click", pressOperator)
+  );
+
+  function pressOperator(e) {
+    const operatorKey = e.currentTarget;
+    const action = operatorKey.dataset.action;
+    console.log(action);
+
+    if (calculatorState.savedNumber !== null) {
+      display.textContent = calculatorState.operationToExecute(
+        calculatorState.savedNumber,
+        parseFloat(display.textContent)
+      );
+    }
+    if (action === "add") {
+      calculatorState.operationToExecute = sum;
+      calculatorState.shouldCleanUpVisor = true;
+    }
+    calculatorState.savedNumber = parseFloat(display.textContent);
+  }
+
+  keys.addEventListener("click", (e) => {
+    console.log("aqui");
+    const key = e.target;
+    const action = key.dataset.action;
+
+    const displayedNum = display.textContent;
+
+    if (!e.target.matches("button")) return;
+
+    if (!action) {
+      return;
+    }
+
+    if (action === "decimal") {
+      console.log("decimal key!");
+      display.textContent = displayedNum + ".";
+    }
+
+    if (action === "clear") {
+      console.log("clear key!");
+    }
+
+    if (action === "calculate") {
+      console.log("equal key!");
+    }
+  });
+}
+
+// action === "subtract" ||
+// action === "multiply" ||
+// action === "divide"
