@@ -4,9 +4,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function createCalculator() {
   const calculator = document.querySelector(".calculator");
-  const keys = calculator.querySelector(".calculator__keys");
   const display = document.querySelector(".calculator__display");
-
+  const keys = calculator.querySelector(".calculator__keys");
   const calculatorState = {
     operationToExecute: null,
     shouldCleanUpVisor: false,
@@ -15,30 +14,9 @@ function createCalculator() {
 
   applyNumberKeys(calculator, display, calculatorState);
 
-  apllyOperatorKeys(calculator, display, calculatorState);
+  apllyOperatorKeys(display, calculatorState, keys);
 
-  // const operators = keys.querySelectorAll(".key--operator");
-  // operators.forEach((operatorButton) =>
-  //   operatorButton.addEventListener("click", pressOperator)
-  // );
-
-  // function pressOperator(e) {
-  //   const operatorKey = e.currentTarget;
-  //   const action = operatorKey.dataset.action;
-  //   console.log(action);
-
-  //   if (calculatorState.savedNumber !== null) {
-  //     display.textContent = calculatorState.operationToExecute(
-  //       calculatorState.savedNumber,
-  //       parseFloat(display.textContent)
-  //     );
-  //   }
-  //   if (action === "add") {
-  //     calculatorState.operationToExecute = sum;
-  //     calculatorState.shouldCleanUpVisor = true;
-  //   }
-  //   calculatorState.savedNumber = parseFloat(display.textContent);
-  // }
+  equalKey(calculator, calculatorState, display);
 
   keys.addEventListener("click", (e) => {
     console.log("aqui");
@@ -60,10 +38,6 @@ function createCalculator() {
 
     if (action === "clear") {
       console.log("clear key!");
-    }
-
-    if (action === "calculate") {
-      console.log("equal key!");
     }
   });
 }

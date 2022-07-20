@@ -1,5 +1,4 @@
-function apllyOperatorKeys(calculator, display, calculatorState) {
-  const keys = calculator.querySelector(".calculator__keys");
+function apllyOperatorKeys(display, calculatorState, keys) {
   const operators = keys.querySelectorAll(".key--operator");
   operators.forEach((operatorButton) =>
     operatorButton.addEventListener("click", pressOperator)
@@ -20,6 +19,23 @@ function apllyOperatorKeys(calculator, display, calculatorState) {
       calculatorState.operationToExecute = sum;
       calculatorState.shouldCleanUpVisor = true;
     }
+    if (action === "subtract") {
+      calculatorState.operationToExecute = subtract;
+      calculatorState.shouldCleanUpVisor = true;
+    }
+    if (action === "multiply") {
+      calculatorState.operationToExecute = multiply;
+      calculatorState.shouldCleanUpVisor = true;
+    }
+    if (action === "divide") {
+      calculatorState.operationToExecute = divide;
+      calculatorState.shouldCleanUpVisor = true;
+    }
+    // if (action === "calculate") {
+    //   calculatorState.shouldCleanUpVisor = true;
+    //   display.textContent = calculatorState.savedNumber;
+    //   console.log("equal key!");
+    // }
     calculatorState.savedNumber = parseFloat(display.textContent);
   }
 }
