@@ -15,28 +15,30 @@ function createCalculator() {
 
   applyNumberKeys(calculator, display, calculatorState);
 
-  const operators = keys.querySelectorAll(".key--operator");
-  operators.forEach((operatorButton) =>
-    operatorButton.addEventListener("click", pressOperator)
-  );
+  apllyOperatorKeys(calculator, display, calculatorState);
 
-  function pressOperator(e) {
-    const operatorKey = e.currentTarget;
-    const action = operatorKey.dataset.action;
-    console.log(action);
+  // const operators = keys.querySelectorAll(".key--operator");
+  // operators.forEach((operatorButton) =>
+  //   operatorButton.addEventListener("click", pressOperator)
+  // );
 
-    if (calculatorState.savedNumber !== null) {
-      display.textContent = calculatorState.operationToExecute(
-        calculatorState.savedNumber,
-        parseFloat(display.textContent)
-      );
-    }
-    if (action === "add") {
-      calculatorState.operationToExecute = sum;
-      calculatorState.shouldCleanUpVisor = true;
-    }
-    calculatorState.savedNumber = parseFloat(display.textContent);
-  }
+  // function pressOperator(e) {
+  //   const operatorKey = e.currentTarget;
+  //   const action = operatorKey.dataset.action;
+  //   console.log(action);
+
+  //   if (calculatorState.savedNumber !== null) {
+  //     display.textContent = calculatorState.operationToExecute(
+  //       calculatorState.savedNumber,
+  //       parseFloat(display.textContent)
+  //     );
+  //   }
+  //   if (action === "add") {
+  //     calculatorState.operationToExecute = sum;
+  //     calculatorState.shouldCleanUpVisor = true;
+  //   }
+  //   calculatorState.savedNumber = parseFloat(display.textContent);
+  // }
 
   keys.addEventListener("click", (e) => {
     console.log("aqui");
