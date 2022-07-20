@@ -18,28 +18,9 @@ function createCalculator() {
 
   equalKey(calculator, calculatorState, display);
 
-  keys.addEventListener("click", (e) => {
-    console.log("aqui");
-    const key = e.target;
-    const action = key.dataset.action;
+  decimalKey(calculator, calculatorState, display);
 
-    const displayedNum = display.textContent;
-
-    if (!e.target.matches("button")) return;
-
-    if (!action) {
-      return;
-    }
-
-    if (action === "decimal") {
-      console.log("decimal key!");
-      display.textContent = displayedNum + ".";
-    }
-
-    if (action === "clear") {
-      console.log("clear key!");
-    }
-  });
+  clearKey(calculator, calculatorState, display);
 }
 
 // action === "subtract" ||

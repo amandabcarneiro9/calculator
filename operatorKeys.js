@@ -31,11 +31,6 @@ function apllyOperatorKeys(display, calculatorState, keys) {
       calculatorState.operationToExecute = divide;
       calculatorState.shouldCleanUpVisor = true;
     }
-    // if (action === "calculate") {
-    //   calculatorState.shouldCleanUpVisor = true;
-    //   display.textContent = calculatorState.savedNumber;
-    //   console.log("equal key!");
-    // }
     calculatorState.savedNumber = parseFloat(display.textContent);
   }
 }
