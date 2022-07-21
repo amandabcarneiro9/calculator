@@ -13,16 +13,14 @@ function createCalculator() {
   };
 
   applyNumberKeys(calculator, display, calculatorState);
-
   apllyOperatorKeys(display, calculatorState, keys);
-
-  equalKey(calculator, calculatorState, display);
-
+  const equal = equalKey(calculator, calculatorState, display);
   decimalKey(calculator, calculatorState, display);
+  const clear = clearKey(calculator, calculatorState, display);
 
-  clearKey(calculator, calculatorState, display);
+  document.body.addEventListener("keydown", (event) => {
+    console.log(event);
+    if (event.key === "Enter") return equal();
+    if (["Backspace", "Escape"].includes(event.key)) return clear();
+  });
 }
-
-// action === "subtract" ||
-// action === "multiply" ||
-// action === "divide"

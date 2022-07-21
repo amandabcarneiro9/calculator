@@ -1,0 +1,128 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+}
+
+.calculator {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+}
+
+.calculator__display {
+  width: 100%;
+  font-size: 5rem;
+  height: 80px;
+  border: none;
+  background-color: #252525;
+  color: #fff;
+  text-align: right;
+  padding-right: 20px;
+  padding-left: 10px;
+}
+.calculator__keys {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-areas:
+    "clear . . ."
+    "seven eight nine divide"
+    "four five six multiply"
+    "one two three subtract"
+    "zero decimal equal add";
+}
+
+button {
+  height: 60px;
+  background-color: #fff;
+  border-radius: 3px;
+  border: 1px solid #c4c4c4;
+  background-color: transparent;
+  font-size: 2rem;
+  color: #333;
+  background-image: linear-gradient(
+    to bottom,
+    transparent,
+    transparent 50%,
+    rgba(0, 0, 0, 0.04)
+  );
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.45),
+    inset 0 -1px 0 0 rgba(255, 255, 255, 0.15),
+    0 1px 0 0 rgba(255, 255, 255, 0.15);
+  text-shadow: 0 1px rgba(255, 255, 255, 0.4);
+}
+
+button:hover {
+  background-color: #eaeaea;
+}
+
+.key--operator {
+  grid-area: operator;
+  color: #337cac;
+}
+.key--operator[data-action="add"] {
+  grid-area: add;
+}
+.key--operator[data-action="subtract"] {
+  grid-area: subtract;
+}
+.key--operator[data-action="multiply"] {
+  grid-area: multiply;
+}
+.key--operator[data-action="divide"] {
+  grid-area: divide;
+}
+
+.key--clear {
+  grid-area: clear;
+  background-color: #f0595f;
+  border-color: #b0353a;
+  color: #fff;
+}
+.key--decimal {
+  grid-area: decimal;
+}
+.key--equal {
+  grid-area: equal;
+  background-color: #2e86c0;
+  border-color: #337cac;
+  color: #fff;
+}
+
+.--seven {
+  grid-area: seven;
+}
+.--eight {
+  grid-area: eight;
+}
+.--nine {
+  grid-area: nine;
+}
+.--four {
+  grid-area: four;
+}
+.--five {
+  grid-area: five;
+}
+.--six {
+  grid-area: six;
+}
+.--one {
+  grid-area: one;
+}
+.--two {
+  grid-area: two;
+}
+.--three {
+  grid-area: three;
+}
+.--zero {
+  grid-area: zero;
+}
