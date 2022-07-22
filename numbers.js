@@ -14,5 +14,6 @@ function applyNumberKeys(calculator, display, calculatorState) {
     } else {
       display.textContent += keyContent;
     }
+    calculatorState.equalPressed = false;
   }
 }

@@ -9,5 +9,6 @@ function decimalKey(calculator, calculatorState, display) {
       calculatorState.shouldCleanUpVisor = false;
       display.textContent = "0.";
     }
+    calculatorState.equalPressed = false;
   });
 }

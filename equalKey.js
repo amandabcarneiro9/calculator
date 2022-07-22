@@ -9,6 +9,7 @@ function equalKey(calculator, calculatorState, display) {
       );
       calculatorState.savedNumber = lastNumber;
       calculatorState.shouldCleanUpVisor = true;
+      calculatorState.equalPressed = true;
     }
   };
   buttonEqual.addEventListener("click", equal);

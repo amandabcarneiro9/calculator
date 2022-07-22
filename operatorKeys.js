@@ -9,12 +9,13 @@ function apllyOperatorKeys(display, calculatorState, keys) {
     const action = operatorKey.dataset.action;
     console.log(action);
 
-    if (calculatorState.savedNumber !== null) {
+    if (calculatorState.savedNumber !== null && !calculatorState.equalPressed) {
       display.textContent = calculatorState.operationToExecute(
         calculatorState.savedNumber,
         parseFloat(display.textContent)
       );
     }
+    calculatorState.equalPressed = false;
     if (action === "add") {
       calculatorState.operationToExecute = sum;
       calculatorState.shouldCleanUpVisor = true;

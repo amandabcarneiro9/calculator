@@ -5,6 +5,7 @@ function clearKey(calculator, calculatorState, display) {
     calculatorState.operationToExecute = null;
     calculatorState.shouldCleanUpVisor = false;
     calculatorState.savedNumber = null;
+    calculatorState.equalPressed = false;
     console.log("clear");
   };
   pressedClearKey.addEventListener("click", clear);

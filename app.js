@@ -10,6 +10,7 @@ function createCalculator() {
     operationToExecute: null,
     shouldCleanUpVisor: false,
     savedNumber: null,
+    equalPressed: false,
   };
 
   applyNumberKeys(calculator, display, calculatorState);
