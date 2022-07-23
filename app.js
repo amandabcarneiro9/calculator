@@ -13,9 +13,18 @@ function createCalculator() {
     equalPressed: false,
   };
 
+  const checkError = () => {
+    if (display.textContent.includes("error")) {
+      calculatorState.operationToExecute = null;
+      calculatorState.shouldCleanUpVisor = true;
+      calculatorState.savedNumber = null;
+      calculatorState.equalPressed = false;
+    }
+  };
+
   applyNumberKeys(calculator, display, calculatorState);
-  apllyOperatorKeys(display, calculatorState, keys);
-  const equal = equalKey(calculator, calculatorState, display);
+  apllyOperatorKeys(display, calculatorState, keys, checkError);
+  const equal = equalKey(calculator, calculatorState, display, checkError);
   decimalKey(calculator, calculatorState, display);
   const clear = clearKey(calculator, calculatorState, display);
 

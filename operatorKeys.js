@@ -1,4 +1,4 @@
-function apllyOperatorKeys(display, calculatorState, keys) {
+function apllyOperatorKeys(display, calculatorState, keys, checkError) {
   const operators = keys.querySelectorAll(".key--operator");
   operators.forEach((operatorButton) =>
     operatorButton.addEventListener("click", pressOperator)
@@ -9,11 +9,17 @@ function apllyOperatorKeys(display, calculatorState, keys) {
     const action = operatorKey.dataset.action;
     console.log(action);
 
+    if (display.textContent.includes("error")) {
+      return;
+    }
+
     if (calculatorState.savedNumber !== null && !calculatorState.equalPressed) {
       display.textContent = calculatorState.operationToExecute(
         calculatorState.savedNumber,
         parseFloat(display.textContent)
       );
+
+      checkError();
     }
     calculatorState.equalPressed = false;
     if (action === "add") {

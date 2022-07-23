@@ -1,4 +1,4 @@
-function equalKey(calculator, calculatorState, display) {
+function equalKey(calculator, calculatorState, display, checkError) {
   const buttonEqual = calculator.querySelector(".key--equal");
   const equal = () => {
     if (calculatorState.operationToExecute) {
@@ -10,6 +10,7 @@ function equalKey(calculator, calculatorState, display) {
       calculatorState.savedNumber = lastNumber;
       calculatorState.shouldCleanUpVisor = true;
       calculatorState.equalPressed = true;
+      checkError();
     }
   };
   buttonEqual.addEventListener("click", equal);
